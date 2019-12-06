@@ -25,9 +25,9 @@ run mem input output ptr = case opcode of
   8 -> case v1 == v2 of True  -> run (mem' mem p3 1) input output (ptr + 4)
                         False -> run (mem' mem p3 0) input output (ptr + 4)
   where instruction = mem !! ptr
-        opcode = mod instruction 100 -- Last two digits of the instruction
+        opcode = mod instruction 100 -- Last two digits of the instruction.
         modes' = replicate 3 0 ++ digits (div instruction 100) -- Takes all digits of the instruction but the last two,
-        modes = reverse $ drop (length modes' - 3) modes'      -- pads with 0s and reverses, so `12` becomes `[2,1,0]`.
+        modes = reverse $ drop (length modes' - 3) modes'      -- reverses, and pads with 0s, so `12` becomes `[2,1,0]`.
         p1 = case modes !! 0 of 0 -> mem !! (ptr + 1) -- 1st parameter if in position mode.
                                 1 -> ptr + 1          -- 1st parameter if in immediate mode.
         p2 = case modes !! 1 of 0 -> mem !! (ptr + 2)
