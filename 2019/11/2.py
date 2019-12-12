@@ -1,5 +1,5 @@
-# Day 11: Space Police (Part 1)
-# Use Intcode computer to determine which spaceship panels to paint and count how many have been painted.
+# Day 11: Space Police (Part 2)
+# Read what was painted.
 
 def run(mem, ptr, rel, inpt):
   output = []
@@ -143,4 +143,4 @@ while not done:
     done = True
 
 pprint(paint, position, direction)
-print(len(paint))
+# print(len(paint))
