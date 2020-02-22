@@ -11,20 +11,17 @@ fn main() {
   println!("Output: {:?}", run(&mut mem, 5));
 }
 
-fn digits(number: i32) -> (i32, Vec<i32>) {
-  let n12 = number % 100;
-  let n3 = number / 100 % 10;
-  let n4 = number / 1000 % 10;
-  let n5 = number / 10000 % 10;
-  return (n12, vec![n3, n4, n5]);
-}
-
 fn run(mem: &mut Vec<i32>, input: i32) -> Vec<i32> {
   let mut ptr = 0;
   let mut output = Vec::new();
 
   loop {
-    let (opcode, modes) = digits(mem[ptr]);
+    let opcode = mem[ptr] % 100;
+    let modes = vec![
+      mem[ptr] / 100 % 10,
+      mem[ptr] / 1000 % 10,
+      mem[ptr] / 10000 % 10,
+    ];
 
     let num_args = match opcode {
       1 | 2 | 7 | 8 => 3,
