@@ -14,7 +14,7 @@ oScore x y = 3
 
 main = do
   args <- System.Environment.getArgs
-  input <- fmap words <$> lines <$> readFile' args
+  input <- map words <$> lines <$> readFile' args
   print $ sum [sScore (x !! 1) + oScore (x !! 0) (x !! 1) | x <- input]
   where readFile' [] = readFile "input"
         readFile' x = readFile $ head x
