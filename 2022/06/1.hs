@@ -7,4 +7,4 @@ main = do
   let n = 4
       isMarker x = nub x == x
       td x = take n $ drop x input
-  print $ fst $ head $ filter snd [(x + n, isMarker $ td x) | x <- [0 ..]]
+  print $ head [x + n | x <- [0 ..], isMarker $ td x]
